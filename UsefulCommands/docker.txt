@@ -1,0 +1,19 @@
+sudo docker kill $(sudo docker ps -q)
+
+sudo docker network ls
+sudo docker network rm h520032c3d31
+
+sudo docker container ls -a
+sudo docker container stop [container_id]
+sudo docker container rm [container_id]
+sudo docker container stop $(sudo docker container ls -aq)
+sudo docker container rm $(sudo docker container ls -aq)
+
+sudo docker container stop $(sudo docker container ls -aq) && sudo docker system prune -af --volumes
+
+sudo docker image ls
+sudo docker image rm [image_id1] [image_id2]
+sudo docker image rm $(sudo docker image ls)
+
+sudo docker volume ls
+sudo docker volume rm $(sudo docker volume ls)

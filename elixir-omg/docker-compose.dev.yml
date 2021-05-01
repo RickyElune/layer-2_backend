@@ -1,0 +1,34 @@
+version: "2.3"
+services:
+  elixir-omg:
+    image: omisegoimages/elixir-omg-builder:stable-20201207
+    environment:
+      DATABASE_URL: postgres://omisegodev:omisegodev@postgres:5432/omisego_dev
+      TEST_DATABASE_URL: postgres://omisegodev:omisegodev@postgres:5432/omisego_test
+      SHELL: /bin/bash
+    volumes:
+      - .:/app:rw
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      chain_net:
+        ipv4_address: 172.27.0.119
+  watcher:
+    environment:
+      - DD_DISABLED=false
+    depends_on:
+      datadog:
+        condition: service_healthy
+  watcher_info:
+    environment:
+      - DD_DISABLED=false
+    depends_on:
+      datadog:
+        condition: service_healthy
+  childchain:
+    environment:
+      - DD_DISABLED=false
+    depends_on:
+      datadog:
+        condition: service_healthy

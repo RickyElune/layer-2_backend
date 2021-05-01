@@ -1,0 +1,4 @@
+
+https://ethereum.stackexchange.com/questions/3720/how-do-i-get-the-raw-private-key-from-my-mist-keystore-file
+
+web3 account extract --keyfile ~/Downloads/keystore-file --password password

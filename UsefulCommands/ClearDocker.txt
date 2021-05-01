@@ -1,0 +1,11 @@
+sudo docker kill $(sudo docker ps -q)
+
+sudo docker network ls
+sudo docker network rm h520032c3d31
+
+//  delete all container
+sudo docker container stop $(sudo docker container ls -aq)
+sudo docker container rm $(sudo docker container ls -aq)
+
+//  delete all downloaded package
+sudo docker container stop $(sudo docker container ls -aq) && sudo docker system prune -af --volumes
